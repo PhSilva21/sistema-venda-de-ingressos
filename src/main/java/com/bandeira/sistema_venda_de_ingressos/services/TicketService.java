@@ -17,9 +17,6 @@ public interface TicketService {
 
     void deleteAllTickets();
 
-    @Transactional
-    void insertTicket(CreateTicketDTO request);
-
     void insertTicketLowerEast(CreateTicketDTO request);
 
     void insertTicketUpperEast(CreateTicketDTO request);

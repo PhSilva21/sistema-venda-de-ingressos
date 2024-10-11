@@ -65,11 +65,11 @@ public class TicketServiceImpl implements TicketService {
                     StatusTicket.AVAILABLE
             );
 
-            List<Ticket> tickets = new ArrayList<>();
+           var response = new ArrayList<>();
 
             tickets.add(ticket);
 
-            ticketRepository.saveAll(tickets);
+            ticketRepository.saveAll(response);
 
         }
     }
@@ -88,11 +88,11 @@ public class TicketServiceImpl implements TicketService {
                     StatusTicket.AVAILABLE
             );
 
-            List<Ticket> tickets = new ArrayList<>();
+           var response = new ArrayList<>();
 
             tickets.add(ticket);
 
-            ticketRepository.saveAll(tickets);
+            ticketRepository.saveAll(response);
 
         }
     }
@@ -111,11 +111,11 @@ public class TicketServiceImpl implements TicketService {
                     StatusTicket.AVAILABLE
             );
 
-            List<Ticket> tickets = new ArrayList<>();
+           var response = new ArrayList<>();
 
             tickets.add(ticket);
 
-            ticketRepository.saveAll(tickets);
+            ticketRepository.saveAll(response);
 
         }
     }
@@ -134,11 +134,11 @@ public class TicketServiceImpl implements TicketService {
                     StatusTicket.AVAILABLE
             );
 
-            List<Ticket> tickets = new ArrayList<>();
+           var response = new ArrayList<>();
 
             tickets.add(ticket);
 
-            ticketRepository.saveAll(tickets);
+            ticketRepository.saveAll(response);
 
         }
     }
@@ -157,11 +157,11 @@ public class TicketServiceImpl implements TicketService {
                     StatusTicket.AVAILABLE
             );
 
-            List<Ticket> tickets = new ArrayList<>();
+           var response = new ArrayList<>();
 
             tickets.add(ticket);
 
-            ticketRepository.saveAll(tickets);
+            ticketRepository.saveAll(response);
 
         }
     }
@@ -180,11 +180,11 @@ public class TicketServiceImpl implements TicketService {
                     StatusTicket.AVAILABLE
             );
 
-            List<Ticket> tickets = new ArrayList<>();
+           var response = new ArrayList<>();
 
             tickets.add(ticket);
 
-            ticketRepository.saveAll(tickets);
+            ticketRepository.saveAll(response);
 
         }
     }
@@ -203,11 +203,11 @@ public class TicketServiceImpl implements TicketService {
                     StatusTicket.AVAILABLE
             );
 
-            List<Ticket> tickets = new ArrayList<>();
+           var response = new ArrayList<>();
 
             tickets.add(ticket);
 
-            ticketRepository.saveAll(tickets);
+            ticketRepository.saveAll(response);
 
         }
     }
@@ -226,11 +226,11 @@ public class TicketServiceImpl implements TicketService {
                     StatusTicket.AVAILABLE
             );
 
-            List<Ticket> tickets = new ArrayList<>();
+           var response = new ArrayList<>();
 
             tickets.add(ticket);
 
-            ticketRepository.saveAll(tickets);
+            ticketRepository.saveAll(response);
 
         }
     }
@@ -315,9 +315,5 @@ public class TicketServiceImpl implements TicketService {
         ticketRepository.deleteAll();
     }
 
-    @Override
-    public void insertTicket(CreateTicketDTO request) {
-
-    }
 
 }
