@@ -1,7 +1,10 @@
 package com.bandeira.sistema_venda_de_ingressos.models;
 
+import com.bandeira.sistema_venda_de_ingressos.models.enums.SectorTicket;
 import com.bandeira.sistema_venda_de_ingressos.models.enums.StatusTicket;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.deser.std.NumberDeserializers;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,12 +29,6 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-
     private LocalDate date;
 
 
@@ -41,12 +38,24 @@ public class Ticket {
     private BigDecimal price;
 
 
+    private SectorTicket sector;
+
+
     private StatusTicket statusTicket;
 
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    public Ticket(Long chair, BigDecimal price , StatusTicket statusTicket) {
-        this.chair = chair;
+
+
+    public Ticket(BigDecimal price, Long chair, LocalDate date, SectorTicket sector
+            , StatusTicket statusTicket) {
         this.price = price;
+        this.chair = chair;
+        this.date = date;
+        this.sector = sector;
         this.statusTicket = statusTicket;
     }
 }

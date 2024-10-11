@@ -16,7 +16,7 @@ import java.util.List;
 @Setter
 @Table(name = "tb_users")
 @Entity
-public class User implements UserDetails{
+public class User implements UserDetails {
 
 
     @Id
@@ -41,6 +41,12 @@ public class User implements UserDetails{
 
     private Long points;
 
+    @OneToMany(mappedBy = "user")
+    List<Ticket> tickets = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Plan> vipsUsers = new ArrayList<>();
+
 
     public User(String name, String email, String password, String cpf, UserRole userRole) {
         this.name = name;
@@ -50,8 +56,7 @@ public class User implements UserDetails{
         this.userRole = userRole;
     }
 
-    @OneToMany(mappedBy = "user")
-    List<Ticket> tickets = new ArrayList<>();
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

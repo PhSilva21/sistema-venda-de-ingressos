@@ -22,11 +22,7 @@ public class UserController {
     private final UserService userService;
 
 
-    @PostMapping("/create-user")
-    public ResponseEntity<Void> createUser(@RequestBody CreateUserDTO request) throws MessagingException, UnsupportedEncodingException {
-        userService.createUser(request);
-        return ResponseEntity.ok().build();
-    }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<UserDetails> findById(@PathVariable Long id) {
@@ -52,9 +48,5 @@ public class UserController {
         return  ResponseEntity.ok().build();
     }
 
-    @PutMapping("/update-password")
-    public ResponseEntity<User> updatePassword(@RequestBody UpdatePasswordDTO request) {
-        userService.updatePassword(request);
-        return ResponseEntity.ok().build();
-    }
+
 }

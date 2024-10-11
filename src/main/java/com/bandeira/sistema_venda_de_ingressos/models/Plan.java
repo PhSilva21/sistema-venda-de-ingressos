@@ -1,5 +1,6 @@
 package com.bandeira.sistema_venda_de_ingressos.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,7 +25,10 @@ public class Plan {
 
     private BigDecimal price;
 
-    private List<Plan> vipsUsers = new ArrayList<>();
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
 
     public Plan(String name, BigDecimal price) {
