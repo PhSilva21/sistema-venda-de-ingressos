@@ -14,7 +14,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/tickets")
+@RequestMapping("api/v1/tickets")
 @RequiredArgsConstructor
 public class TicketController {
 
