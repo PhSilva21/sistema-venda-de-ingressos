@@ -1,7 +1,6 @@
 package com.bandeira.sistema_venda_de_ingressos.services.impl;
 
 
-import com.bandeira.sistema_venda_de_ingressos.dtos.BuyTicketDTO;
 import com.bandeira.sistema_venda_de_ingressos.dtos.CreateTicketDTO;
 import com.bandeira.sistema_venda_de_ingressos.exceptions.TicketsSoldOut;
 import com.bandeira.sistema_venda_de_ingressos.exceptions.UserNotFoundException;
@@ -17,7 +16,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.io.UnsupportedEncodingException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,11 +32,11 @@ public class TicketServiceImpl implements TicketService {
 
 
     @Override
-    public void buyTicket(BuyTicketDTO request) throws MessagingException, UnsupportedEncodingException {
+    public void buyTicket(Long id) throws MessagingException, UnsupportedEncodingException {
 
         var ticket = filterList();
 
-        var user = userRepository.findById(request.userId())
+        var user = userRepository.findById(id)
                 .orElseThrow(UserNotFoundException::new);
 
         ticket.setUser(user);

@@ -1,19 +1,16 @@
 package com.bandeira.sistema_venda_de_ingressos.services;
 
-import com.bandeira.sistema_venda_de_ingressos.dtos.BuyTicketDTO;
 import com.bandeira.sistema_venda_de_ingressos.dtos.CreateTicketDTO;
 import com.bandeira.sistema_venda_de_ingressos.models.Ticket;
 import jakarta.mail.MessagingException;
-import jakarta.transaction.Transactional;
 
 import java.io.UnsupportedEncodingException;
-import java.math.BigDecimal;
 import java.util.List;
 
 
 public interface TicketService {
 
-    void buyTicket(BuyTicketDTO id) throws MessagingException, UnsupportedEncodingException;
+    void buyTicket(Long id) throws MessagingException, UnsupportedEncodingException;
 
     void deleteAllTickets();
 
