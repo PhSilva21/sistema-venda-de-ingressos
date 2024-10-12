@@ -1,6 +1,5 @@
 package com.bandeira.sistema_venda_de_ingressos.services.impl;
 
-import com.bandeira.sistema_venda_de_ingressos.dtos.BuyPlanDTO;
 import com.bandeira.sistema_venda_de_ingressos.dtos.CreatePlanDTO;
 import com.bandeira.sistema_venda_de_ingressos.dtos.UpdatePlanDTO;
 import com.bandeira.sistema_venda_de_ingressos.exceptions.PlanNotFoundException;
@@ -28,8 +27,8 @@ public class VipPlanServiceImpl implements VipPlanService {
     private final EmailService emailService;
 
     @Override
-    public void buySilverPlan(BuyPlanDTO request) throws MessagingException, UnsupportedEncodingException {
-        var user = userRepository.findById(request.userId())
+    public void buySilverPlan(Long id) throws MessagingException, UnsupportedEncodingException {
+        var user = userRepository.findById(id)
                 .orElseThrow(UserNotFoundException::new);
 
         var plan = planRepository.findById(1L).orElseThrow(RuntimeException::new);
@@ -40,8 +39,8 @@ public class VipPlanServiceImpl implements VipPlanService {
     }
 
     @Override
-    public void buyGoldPlan(BuyPlanDTO request) throws MessagingException, UnsupportedEncodingException {
-        var user = userRepository.findById(request.userId())
+    public void buyGoldPlan(Long id) throws MessagingException, UnsupportedEncodingException {
+        var user = userRepository.findById(id)
                 .orElseThrow(UserNotFoundException::new);
 
         var plan = planRepository.findById(2L).orElseThrow(RuntimeException::new);
@@ -53,8 +52,8 @@ public class VipPlanServiceImpl implements VipPlanService {
     }
 
     @Override
-    public void buyEmeraldPlan(BuyPlanDTO request) throws MessagingException, UnsupportedEncodingException {
-        var user = userRepository.findById(request.userId())
+    public void buyEmeraldPlan(Long id) throws MessagingException, UnsupportedEncodingException {
+        var user = userRepository.findById(id)
                 .orElseThrow(UserNotFoundException::new);
 
         var plan = planRepository.findById(3L).orElseThrow(RuntimeException::new);
@@ -66,8 +65,8 @@ public class VipPlanServiceImpl implements VipPlanService {
     }
 
     @Override
-    public void buyDiamondPlan(BuyPlanDTO request) throws MessagingException, UnsupportedEncodingException {
-        var user = userRepository.findById(request.userId())
+    public void buyDiamondPlan(Long id) throws MessagingException, UnsupportedEncodingException {
+        var user = userRepository.findById(id)
                 .orElseThrow(UserNotFoundException::new);
 
         var plan = planRepository.findById(4L).orElseThrow(RuntimeException::new);

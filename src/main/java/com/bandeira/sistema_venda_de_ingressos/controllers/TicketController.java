@@ -21,8 +21,8 @@ public class TicketController {
     private final TicketService ticketService;
     
     @PostMapping("/buy")
-    public ResponseEntity<Void> buyTicket(@RequestBody BuyTicketDTO request) throws MessagingException, UnsupportedEncodingException, UnsupportedEncodingException {
-        ticketService.buyTicket(request);
+    public ResponseEntity<Void> buyTicket(@RequestBody Long id) throws MessagingException, UnsupportedEncodingException, UnsupportedEncodingException {
+        ticketService.buyTicket(id);
         return ResponseEntity.ok().build();
     }
 
@@ -83,37 +83,37 @@ public class TicketController {
 
     @GetMapping("/filter-lowerEast")
     public ResponseEntity<List<Ticket>> filterLowerEast() {
-       var response = ticketService.filterLowerEast();
+        var response = ticketService.filterLowerEast();
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/filter-upperEast")
     public ResponseEntity<List<Ticket>> filterUpperEast() {
-       var response = ticketService.filterUppersEast();
+        var response = ticketService.filterUppersEast();
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/filter-lowerWest")
     public ResponseEntity<List<Ticket>> filterLowerWest() {
-       var response = ticketService.filterLowerWest();
+        var response = ticketService.filterLowerWest();
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/filter-upperWest")
     public ResponseEntity<List<Ticket>> filterUpperWest() {
-       var response = ticketService.filterUpperWest();
+        var response = ticketService.filterUpperWest();
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/filter-lowerSouth")
     public ResponseEntity<List<Ticket>> filterLowerSouth() {
-       var response = ticketService.filterLowerSouth();
+        var response = ticketService.filterLowerSouth();
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/filter-upperSouth")
     public ResponseEntity<List<Ticket>> filterUpperSouth() {
-       var response = ticketService.filterUpperSouth();
+        var response = ticketService.filterUpperSouth();
         return ResponseEntity.ok(response);
     }
 
@@ -125,7 +125,7 @@ public class TicketController {
 
     @GetMapping("/filter-upperNorth")
     public ResponseEntity<List<Ticket>> filterUpperNorth() {
-       var response = ticketService.filterUpperNorth();
+        var response = ticketService.filterUpperNorth();
         return ResponseEntity.ok(response);
     }
 

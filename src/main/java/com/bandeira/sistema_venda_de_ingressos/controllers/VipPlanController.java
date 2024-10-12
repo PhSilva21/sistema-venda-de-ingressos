@@ -1,6 +1,5 @@
 package com.bandeira.sistema_venda_de_ingressos.controllers;
 
-import com.bandeira.sistema_venda_de_ingressos.dtos.BuyPlanDTO;
 import com.bandeira.sistema_venda_de_ingressos.dtos.CreatePlanDTO;
 import com.bandeira.sistema_venda_de_ingressos.dtos.UpdatePlanDTO;
 import com.bandeira.sistema_venda_de_ingressos.models.Plan;
@@ -20,26 +19,26 @@ public class VipPlanController {
     private final VipPlanService vipPlanService;
 
     @PostMapping("/buy-silver-plan")
-    public ResponseEntity<Void> buySilverPlan(@RequestBody BuyPlanDTO request) throws MessagingException, UnsupportedEncodingException {
-        vipPlanService.buySilverPlan(request);
+    public ResponseEntity<Void> buySilverPlan(@RequestBody Long id) throws MessagingException, UnsupportedEncodingException {
+        vipPlanService.buySilverPlan(id);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/buy-gold-plan")
-    public ResponseEntity<Void> buyGoldPlan(@RequestBody BuyPlanDTO request) throws MessagingException, UnsupportedEncodingException {
-        vipPlanService.buyGoldPlan(request);
+    public ResponseEntity<Void> buyGoldPlan(@RequestBody Long id) throws MessagingException, UnsupportedEncodingException {
+        vipPlanService.buyGoldPlan(id);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/buy-emerald-plan")
-    public ResponseEntity<Void> buyEmeraldPlan(@RequestBody BuyPlanDTO request) throws MessagingException, UnsupportedEncodingException {
-        vipPlanService.buyEmeraldPlan(request);
+    public ResponseEntity<Void> buyEmeraldPlan(@RequestBody Long id) throws MessagingException, UnsupportedEncodingException {
+        vipPlanService.buyEmeraldPlan(id);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/buy-diamond-plan")
-    public ResponseEntity<Void> buyDiamondPlan(@RequestBody BuyPlanDTO request) throws MessagingException, UnsupportedEncodingException {
-        vipPlanService.buyDiamondPlan(request);
+    public ResponseEntity<Void> buyDiamondPlan(@RequestBody Long id) throws MessagingException, UnsupportedEncodingException {
+        vipPlanService.buyDiamondPlan(id);
         return ResponseEntity.ok().build();
     }
 

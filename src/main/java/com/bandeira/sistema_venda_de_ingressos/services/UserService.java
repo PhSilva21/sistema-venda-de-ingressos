@@ -3,14 +3,17 @@ package com.bandeira.sistema_venda_de_ingressos.services;
 import com.bandeira.sistema_venda_de_ingressos.dtos.*;
 import com.bandeira.sistema_venda_de_ingressos.models.User;
 import jakarta.mail.MessagingException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.io.UnsupportedEncodingException;
 
 public interface UserService {
 
 
-    void createUser(CreateUserDTO createUserDTO) throws MessagingException, UnsupportedEncodingException;
+    void createUser(CreateUserDTO request) throws MessagingException, UnsupportedEncodingException;
 
     UserDetails findById(Long id);
 

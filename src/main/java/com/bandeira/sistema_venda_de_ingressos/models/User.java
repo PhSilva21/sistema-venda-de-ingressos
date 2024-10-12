@@ -41,8 +41,7 @@ public class User implements UserDetails {
 
     private Long points;
 
-    @OneToMany(mappedBy = "user")
-   var response = new ArrayList<>();
+
 
     @OneToMany(mappedBy = "user")
     private List<Plan> vipsUsers = new ArrayList<>();

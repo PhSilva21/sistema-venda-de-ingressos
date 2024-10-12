@@ -13,7 +13,7 @@ import java.util.List;
 
 public interface TicketService {
 
-    void buyTicket(BuyTicketDTO request) throws MessagingException, UnsupportedEncodingException;
+    void buyTicket(BuyTicketDTO id) throws MessagingException, UnsupportedEncodingException;
 
     void deleteAllTickets();
 

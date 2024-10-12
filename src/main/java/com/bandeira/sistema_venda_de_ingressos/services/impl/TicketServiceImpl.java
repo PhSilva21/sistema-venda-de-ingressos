@@ -65,11 +65,11 @@ public class TicketServiceImpl implements TicketService {
                     StatusTicket.AVAILABLE
             );
 
-           var response = new ArrayList<>();
+           List<Ticket> tickets = new ArrayList<>();
 
             tickets.add(ticket);
 
-            ticketRepository.saveAll(response);
+            ticketRepository.saveAll(tickets);
 
         }
     }
@@ -88,11 +88,11 @@ public class TicketServiceImpl implements TicketService {
                     StatusTicket.AVAILABLE
             );
 
-           var response = new ArrayList<>();
+           List<Ticket> tickets = new ArrayList<>();
 
             tickets.add(ticket);
 
-            ticketRepository.saveAll(response);
+            ticketRepository.saveAll(tickets);
 
         }
     }
@@ -111,11 +111,11 @@ public class TicketServiceImpl implements TicketService {
                     StatusTicket.AVAILABLE
             );
 
-           var response = new ArrayList<>();
+           List<Ticket> tickets = new ArrayList<>();
 
             tickets.add(ticket);
 
-            ticketRepository.saveAll(response);
+            ticketRepository.saveAll(tickets);
 
         }
     }
@@ -134,11 +134,11 @@ public class TicketServiceImpl implements TicketService {
                     StatusTicket.AVAILABLE
             );
 
-           var response = new ArrayList<>();
+           List<Ticket> tickets = new ArrayList<>();
 
             tickets.add(ticket);
 
-            ticketRepository.saveAll(response);
+            ticketRepository.saveAll(tickets);
 
         }
     }
@@ -157,11 +157,11 @@ public class TicketServiceImpl implements TicketService {
                     StatusTicket.AVAILABLE
             );
 
-           var response = new ArrayList<>();
+           List<Ticket> tickets = new ArrayList<>();
 
             tickets.add(ticket);
 
-            ticketRepository.saveAll(response);
+            ticketRepository.saveAll(tickets);
 
         }
     }
@@ -180,11 +180,11 @@ public class TicketServiceImpl implements TicketService {
                     StatusTicket.AVAILABLE
             );
 
-           var response = new ArrayList<>();
+           List<Ticket> tickets = new ArrayList<>();
 
             tickets.add(ticket);
 
-            ticketRepository.saveAll(response);
+            ticketRepository.saveAll(tickets);
 
         }
     }
@@ -203,11 +203,11 @@ public class TicketServiceImpl implements TicketService {
                     StatusTicket.AVAILABLE
             );
 
-           var response = new ArrayList<>();
+           List<Ticket> tickets = new ArrayList<>();
 
             tickets.add(ticket);
 
-            ticketRepository.saveAll(response);
+            ticketRepository.saveAll(tickets);
 
         }
     }
@@ -226,11 +226,11 @@ public class TicketServiceImpl implements TicketService {
                     StatusTicket.AVAILABLE
             );
 
-           var response = new ArrayList<>();
+           List<Ticket> tickets = new ArrayList<>();
 
             tickets.add(ticket);
 
-            ticketRepository.saveAll(response);
+            ticketRepository.saveAll(tickets);
 
         }
     }

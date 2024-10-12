@@ -16,8 +16,8 @@ public class SecuritySecurity {
 
         return httpSecurity.csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests( authorize -> authorize
-                        .anyRequest().permitAll()
+                .authorizeHttpids( authorize -> authorize
+                        .anyid().permitAll()
                 ).build();
     }
 
