@@ -15,7 +15,9 @@ public interface UserService {
 
     void createUser(CreateUserDTO request) throws MessagingException, UnsupportedEncodingException;
 
-    UserDetails findById(Long id);
+    LoginResponse login(LoginUserDTO request);
+
+    User findById(Long id);
 
     void updateUser(UpdateUserDTO updateUserDTO);
 

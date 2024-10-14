@@ -1,18 +1,19 @@
 package com.bandeira.sistema_venda_de_ingressos.services.impl;
 
-
-import com.bandeira.sistema_venda_de_ingressos.dtos.CreateUserDTO;
-import com.bandeira.sistema_venda_de_ingressos.dtos.UpdateEmailDTO;
-import com.bandeira.sistema_venda_de_ingressos.dtos.UpdatePasswordDTO;
-import com.bandeira.sistema_venda_de_ingressos.dtos.UpdateUserDTO;
+import com.bandeira.sistema_venda_de_ingressos.dtos.*;
 import com.bandeira.sistema_venda_de_ingressos.exceptions.*;
 import com.bandeira.sistema_venda_de_ingressos.models.User;
 import com.bandeira.sistema_venda_de_ingressos.repositories.UserRepository;
 import com.bandeira.sistema_venda_de_ingressos.services.EmailService;
+import com.bandeira.sistema_venda_de_ingressos.services.TokenService;
 import com.bandeira.sistema_venda_de_ingressos.services.UserService;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,10 @@ public class UserServiceImpl implements UserService {
     private final EmailService emailService;
 
     private final PasswordEncoder passwordEncoder;
+
+    private final AuthenticationManager authenticationManager;
+
+    private final TokenService tokenService;
 
 
     @Override
@@ -48,8 +53,20 @@ public class UserServiceImpl implements UserService {
         emailService.sendEmailCreateUser(user);
     }
 
+
     @Override
-    public UserDetails findById(Long id) {
+    public LoginResponse login(LoginUserDTO request) {
+        var usernamePassword = new UsernamePasswordAuthenticationToken(request.email(), request.password());
+        var auth = this.authenticationManager.authenticate(usernamePassword);
+
+        var token = tokenService.generateToken((User) auth.getPrincipal());
+
+        return new LoginResponse(token);
+    }
+
+
+    @Override
+    public User findById(Long id) {
         return userRepository.findById(id).orElseThrow(UserNotFoundException::new);
     }
 
@@ -110,8 +127,9 @@ public class UserServiceImpl implements UserService {
 
 
     public String encryptedPassword(String password){
-        return passwordEncoder.encode(password);
+        return new BCryptPasswordEncoder().encode(password);
     }
+
 
 
 }

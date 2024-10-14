@@ -6,9 +6,10 @@ import java.time.Instant;
 
 public interface TokenService {
 
-    public String generateToken(User user);
 
-    public String validateToken(String token);
+    String generateToken(User user);
 
-    public Instant getExpirationDate();
+    String validateToken(String token);
+
+    Instant genExpirationDate();
 }

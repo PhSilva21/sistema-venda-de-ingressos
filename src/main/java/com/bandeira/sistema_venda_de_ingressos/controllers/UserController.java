@@ -1,10 +1,8 @@
 package com.bandeira.sistema_venda_de_ingressos.controllers;
 
-import com.bandeira.sistema_venda_de_ingressos.dtos.CreateUserDTO;
-import com.bandeira.sistema_venda_de_ingressos.dtos.UpdateEmailDTO;
-import com.bandeira.sistema_venda_de_ingressos.dtos.UpdatePasswordDTO;
-import com.bandeira.sistema_venda_de_ingressos.dtos.UpdateUserDTO;
+import com.bandeira.sistema_venda_de_ingressos.dtos.*;
 import com.bandeira.sistema_venda_de_ingressos.models.User;
+import com.bandeira.sistema_venda_de_ingressos.services.TokenService;
 import com.bandeira.sistema_venda_de_ingressos.services.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -12,6 +10,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,19 +24,35 @@ public class UserController {
 
     private final UserService userService;
 
+    private final AuthenticationManager authenticationManager;
+
+    private final TokenService tokenService;
+
     @Operation(description = "Operação para criar usuário")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Usuario criado com sucesso"),
             @ApiResponse(responseCode = "417", description = "Erro de validação de dados"),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
-    @GetMapping("create-user")
+    @PostMapping("create-user")
     public ResponseEntity<UserDetails> createUser(@RequestBody CreateUserDTO request)
             throws MessagingException, UnsupportedEncodingException {
         userService.createUser(request);
         return ResponseEntity.ok().build();
     }
 
+
+    @Operation(description = "Operação para logar o usuário")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Usuario logado com sucesso"),
+            @ApiResponse(responseCode = "417", description = "Erro de validação de dados"),
+            @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
+    })
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginUserDTO request){
+        var response = userService.login(request);
+        return ResponseEntity.ok().body(response);
+    }
 
     @Operation(description = "Operação trocar a senha")
     @ApiResponses(value = {
@@ -58,7 +74,7 @@ public class UserController {
             @ApiResponse(responseCode = "500", description = "Erro intern do servidor")
     })
     @GetMapping("/{id}")
-    public ResponseEntity<UserDetails> findById(@PathVariable Long id) {
+    public ResponseEntity<User> findById(@PathVariable Long id) {
         var user = userService.findById(id);
         return ResponseEntity.ok().body(user);
     }

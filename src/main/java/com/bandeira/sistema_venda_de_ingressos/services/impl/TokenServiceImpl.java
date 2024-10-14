@@ -1,12 +1,12 @@
 package com.bandeira.sistema_venda_de_ingressos.services.impl;
 
-import com.bandeira.sistema_venda_de_ingressos.models.User;
-import com.bandeira.sistema_venda_de_ingressos.services.TokenService;
-
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
+
+import com.bandeira.sistema_venda_de_ingressos.models.User;
+import com.bandeira.sistema_venda_de_ingressos.services.TokenService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -21,13 +21,14 @@ public class TokenServiceImpl implements TokenService {
     private String secret;
 
 
-    public String generateToken(User user){
-        try{
+    @Override
+    public String generateToken(User user) {
+        try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
             String token = JWT.create()
                     .withIssuer("auth-api")
-                    .withSubject(user.getUsername())
-                    .withExpiresAt(getExpirationDate())
+                    .withSubject(user.getEmail())
+                    .withExpiresAt(genExpirationDate())
                     .sign(algorithm);
             return token;
         } catch (JWTCreationException exception) {
@@ -35,21 +36,23 @@ public class TokenServiceImpl implements TokenService {
         }
     }
 
-
+    @Override
     public String validateToken(String token){
-        try {
-            Algorithm algorithm = Algorithm.HMAC256(secret);
-            return JWT.require(algorithm)
-                    .withIssuer("auth-api")
-                    .build()
-                    .verify(token)
-                    .getSubject();
-        } catch (JWTVerificationException exception){
-            return "";
-        }
+            try {
+                Algorithm algorithm = Algorithm.HMAC256(secret);
+                return JWT.require(algorithm)
+                        .withIssuer("auth-api")
+                        .build()
+                        .verify(token)
+                        .getSubject();
+            } catch (JWTVerificationException exception) {
+                return "";
+            }
     }
 
-    public Instant getExpirationDate(){
+
+    @Override
+    public Instant genExpirationDate() {
         return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
     }
 }
