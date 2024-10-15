@@ -367,7 +367,7 @@ class TicketManagementImplTest {
         }
 
     }
-    
+
     @Nested
     class DeleteAllTicketsSuccessfully {
         @Test

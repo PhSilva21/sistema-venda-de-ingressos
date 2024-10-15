@@ -48,8 +48,6 @@ public class TicketServiceImpl implements TicketService {
     }
 
 
-
-
     @Override
     public List<Ticket> filterLowerEast() {
         return ticketRepository.findAll().stream().filter(t -> t.getStatusTicket()

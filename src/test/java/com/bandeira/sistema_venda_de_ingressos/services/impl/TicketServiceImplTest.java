@@ -15,6 +15,7 @@ import com.bandeira.sistema_venda_de_ingressos.services.EmailService;
 import com.bandeira.sistema_venda_de_ingressos.services.TicketService;
 import com.bandeira.sistema_venda_de_ingressos.services.UserService;
 import jakarta.mail.MessagingException;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -60,6 +61,7 @@ class TicketServiceImplTest {
         BuyTicketDTO buyTicketDTO = new BuyTicketDTO(ticket.getId(), user.getId());
 
         @Test
+        @DisplayName("Buy tickets successfully")
         void buyTickets() throws MessagingException, UnsupportedEncodingException {
             var ticketList = List.of(ticket);
 
@@ -85,7 +87,8 @@ class TicketServiceImplTest {
         }
 
         @Test
-        void erroUser() throws MessagingException, UnsupportedEncodingException {
+        @DisplayName("Handle error when user is not found")
+        void handleErrorWhenUserIsNotFound() throws MessagingException, UnsupportedEncodingException {
             doThrow(new UserNotFoundException())
                     .when(userService)
                     .findById(buyTicketDTO.userId());
@@ -96,7 +99,8 @@ class TicketServiceImplTest {
         }
 
         @Test
-        void erroTicket() {
+        @DisplayName("Should make an exception when the tickets are sold out")
+        void ShouldMakeExceptionWhenTheTicketsAreSoldOut() {
             doReturn(user)
                     .when(userService)
                     .findById(buyTicketDTO.userId());
@@ -112,54 +116,116 @@ class TicketServiceImplTest {
     @Nested
     class FilterBySector {
 
-
         @Test
-        void insertTicketLowerNorth() {
-        }
-
-        @Test
-        void insertTicketUpperNorth() {
-        }
-
-        @Test
+        @DisplayName("Filter tickets in the Lower East sector")
         void filterLowerEast() {
+            var ticketList = List.of(new Ticket(BigDecimal.valueOf(127.00), 1L, LocalDate.now()
+                            , SectorTicket.LOWER_EAST, StatusTicket.AVAILABLE));
+            doReturn(ticketList).when(ticketRepository).findAll();
 
+            var response = ticketService.filterLowerEast();
+
+            assertEquals(response.size(), ticketList.size());
+            assertEquals(response.get(0).getSector(), SectorTicket.LOWER_EAST);
+            assertEquals(response.get(0).getStatusTicket(), StatusTicket.AVAILABLE);
         }
 
         @Test
-        void filterUppersEast() {
+        @DisplayName("Filter tickets in the Upper East sector")
+        void filterUpperEast() {
+            var ticketList = List.of(new Ticket(BigDecimal.valueOf(127.00), 1L, LocalDate.now()
+                    , SectorTicket.UPPER_EAST, StatusTicket.AVAILABLE));
+            doReturn(ticketList).when(ticketRepository).findAll();
+
+            var response = ticketService.filterUppersEast();
+
+            assertEquals(response.size(), ticketList.size());
+            assertEquals(response.get(0).getSector(), SectorTicket.UPPER_EAST);
+            assertEquals(response.get(0).getStatusTicket(), StatusTicket.AVAILABLE);
         }
 
         @Test
+        @DisplayName("Filter tickets in the Lower West sector")
         void filterLowerWest() {
+            var ticketList = List.of(new Ticket(BigDecimal.valueOf(100.00), 3L, LocalDate.now(),
+                    SectorTicket.LOWER_WEST, StatusTicket.AVAILABLE));
+            doReturn(ticketList).when(ticketRepository).findAll();
+
+            var response = ticketService.filterLowerWest();
+
+            assertEquals(response.size(), ticketList.size());
+            assertEquals(response.get(0).getSector(), SectorTicket.LOWER_WEST);
+            assertEquals(response.get(0).getStatusTicket(), StatusTicket.AVAILABLE);
         }
 
         @Test
+        @DisplayName("Filter tickets in the Upper West sector")
         void filterUpperWest() {
+            var ticketList = List.of(new Ticket(BigDecimal.valueOf(200.00), 4L, LocalDate.now(),
+                    SectorTicket.UPPER_WEST, StatusTicket.AVAILABLE));
+            doReturn(ticketList).when(ticketRepository).findAll();
+
+            var response = ticketService.filterUpperWest();
+
+            assertEquals(response.size(), ticketList.size());
+            assertEquals(response.get(0).getSector(), SectorTicket.UPPER_WEST);
+            assertEquals(response.get(0).getStatusTicket(), StatusTicket.AVAILABLE);
         }
 
         @Test
+        @DisplayName("Filter tickets in the Lower South sector")
         void filterLowerSouth() {
+            var ticketList = List.of(new Ticket(BigDecimal.valueOf(80.00), 5L, LocalDate.now(),
+                    SectorTicket.LOWER_SOUTH, StatusTicket.AVAILABLE));
+            doReturn(ticketList).when(ticketRepository).findAll();
+
+            var response = ticketService.filterLowerSouth();
+
+            assertEquals(response.size(), ticketList.size());
+            assertEquals(response.get(0).getSector(), SectorTicket.LOWER_SOUTH);
+            assertEquals(response.get(0).getStatusTicket(), StatusTicket.AVAILABLE);
         }
 
         @Test
+        @DisplayName("Filter tickets in the Upper South sector")
         void filterUpperSouth() {
+            var ticketList = List.of(new Ticket(BigDecimal.valueOf(90.00), 6L, LocalDate.now(),
+                    SectorTicket.UPPER_SOUTH, StatusTicket.AVAILABLE));
+            doReturn(ticketList).when(ticketRepository).findAll();
+
+            var response = ticketService.filterUpperSouth();
+
+            assertEquals(response.size(), ticketList.size());
+            assertEquals(response.get(0).getSector(), SectorTicket.UPPER_SOUTH);
+            assertEquals(response.get(0).getStatusTicket(), StatusTicket.AVAILABLE);
         }
 
         @Test
+        @DisplayName("Filter tickets in the Lower North sector")
         void filterLowerNorth() {
+            var ticketList = List.of(new Ticket(BigDecimal.valueOf(75.00), 7L, LocalDate.now(),
+                    SectorTicket.LOWER_NORTH, StatusTicket.AVAILABLE));
+            doReturn(ticketList).when(ticketRepository).findAll();
+
+            var response = ticketService.filterLowerNorth();
+
+            assertEquals(response.size(), ticketList.size());
+            assertEquals(response.get(0).getSector(), SectorTicket.LOWER_NORTH);
+            assertEquals(response.get(0).getStatusTicket(), StatusTicket.AVAILABLE);
         }
 
         @Test
+        @DisplayName("Filter tickets in the Upper North sector")
         void filterUpperNorth() {
-        }
+            var ticketList = List.of(new Ticket(BigDecimal.valueOf(110.00), 8L, LocalDate.now(),
+                    SectorTicket.UPPER_NORTH, StatusTicket.AVAILABLE));
+            doReturn(ticketList).when(ticketRepository).findAll();
 
-        @Test
-        void filterList() {
-        }
+            var response = ticketService.filterUpperNorth();
 
-        @Test
-        void deleteAllTickets() {
+            assertEquals(response.size(), ticketList.size());
+            assertEquals(response.get(0).getSector(), SectorTicket.UPPER_NORTH);
+            assertEquals(response.get(0).getStatusTicket(), StatusTicket.AVAILABLE);
         }
     }
 }
