@@ -1,5 +1,6 @@
 package com.bandeira.sistema_venda_de_ingressos.services;
 
+import com.bandeira.sistema_venda_de_ingressos.dtos.BuyTicketDTO;
 import com.bandeira.sistema_venda_de_ingressos.dtos.CreateTicketDTO;
 import com.bandeira.sistema_venda_de_ingressos.models.Ticket;
 import jakarta.mail.MessagingException;
@@ -10,25 +11,7 @@ import java.util.List;
 
 public interface TicketService {
 
-    void buyTicket(Long id) throws MessagingException, UnsupportedEncodingException;
-
-    void deleteAllTickets();
-
-    void insertTicketLowerEast(CreateTicketDTO request);
-
-    void insertTicketUpperEast(CreateTicketDTO request);
-
-    void insertTicketLowerWest(CreateTicketDTO request);
-
-    void insertTicketUpperWest(CreateTicketDTO request);
-
-    void insertTicketLowerSouth(CreateTicketDTO request);
-
-    void insertTicketUpperSouth(CreateTicketDTO request);
-
-    void insertTicketLowerNorth(CreateTicketDTO request);
-
-    void insertTicketUpperNorth(CreateTicketDTO request);
+    void buyTicket(BuyTicketDTO request) throws MessagingException, UnsupportedEncodingException;
 
     List<Ticket> filterLowerEast();
 
@@ -45,6 +28,8 @@ public interface TicketService {
     List<Ticket> filterLowerNorth();
 
     List<Ticket> filterUpperNorth();
+
+    Ticket findById(Long id);
 
 
 }

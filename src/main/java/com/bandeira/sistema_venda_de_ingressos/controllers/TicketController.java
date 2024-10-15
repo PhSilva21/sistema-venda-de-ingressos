@@ -1,6 +1,6 @@
 package com.bandeira.sistema_venda_de_ingressos.controllers;
 
-import com.bandeira.sistema_venda_de_ingressos.dtos.CreateTicketDTO;
+import com.bandeira.sistema_venda_de_ingressos.dtos.BuyTicketDTO;
 import com.bandeira.sistema_venda_de_ingressos.models.Ticket;
 import com.bandeira.sistema_venda_de_ingressos.services.TicketService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -30,127 +30,10 @@ public class TicketController {
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
     @PostMapping("/buy")
-    public ResponseEntity<Void> buyTicket(@RequestBody Long id) throws MessagingException, UnsupportedEncodingException, UnsupportedEncodingException {
-        ticketService.buyTicket(id);
+    public ResponseEntity<Void> buyTicket(@RequestBody BuyTicketDTO request) throws MessagingException, UnsupportedEncodingException, UnsupportedEncodingException {
+        ticketService.buyTicket(request);
         return ResponseEntity.ok().build();
     }
-
-
-    @Operation(description = "Operação para deletar todos os ingressos da base de dados")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Ingressos deletados com sucesso"),
-            @ApiResponse(responseCode = "401", description = "Usuário não autenticado"),
-            @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
-    })
-    @DeleteMapping("/deleteAll")
-    public ResponseEntity<Void> deleteAllTickets() {
-        ticketService.deleteAllTickets();
-        return ResponseEntity.ok().build();
-    }
-
-
-    @Operation(description = "Operação para colocar ingressos do setor leste inferior a venda")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Ingressos criados com sucesso"),
-            @ApiResponse(responseCode = "401", description = "Usuário não autenticado"),
-            @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
-    })
-    @PostMapping("/insert-lowerEast")
-    public ResponseEntity<Void> insertTicketLowerEast(@RequestBody CreateTicketDTO request) {
-        ticketService.insertTicketLowerEast(request);
-        return ResponseEntity.ok().build();
-    }
-
-
-    @Operation(description = "Operação para colocar ingressos do setor leste superior a venda")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Ingressos criados com sucesso"),
-            @ApiResponse(responseCode = "401", description = "Usuário não autenticado"),
-            @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
-    })
-    @PostMapping("/insert-upperEast")
-    public ResponseEntity<Void> insertTicketUpperEast(@RequestBody CreateTicketDTO request) {
-        ticketService.insertTicketUpperEast(request);
-        return ResponseEntity.ok().build();
-    }
-
-    @Operation(description = "Operação para colocar ingressos do setor oeste inferior a venda")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Ingressos criados com sucesso"),
-            @ApiResponse(responseCode = "401", description = "Usuário não autenticado"),
-            @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
-    })
-    @PostMapping("/insert-lowerWest")
-    public ResponseEntity<Void> insertTicketLowerWest(@RequestBody CreateTicketDTO request) {
-        ticketService.insertTicketLowerWest(request);
-        return ResponseEntity.ok().build();
-    }
-
-
-    @Operation(description = "Operação para colocar ingressos do setor oeste superior a venda")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Ingressos criados com sucesso"),
-            @ApiResponse(responseCode = "401", description = "Usuário não autenticado"),
-            @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
-    })
-    @PostMapping("/insert-upperWest")
-    public ResponseEntity<Void> insertTicketUpperWest(@RequestBody CreateTicketDTO request) {
-        ticketService.insertTicketUpperWest(request);
-        return ResponseEntity.ok().build();
-    }
-
-
-    @Operation(description = "Operação para colocar ingressos do setor sul inferior a venda")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Ingressos criados com sucesso"),
-            @ApiResponse(responseCode = "401", description = "Usuário não autenticado"),
-            @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
-    })
-    @PostMapping("/insert-lowerSouth")
-    public ResponseEntity<Void> insertTicketLowerSouth(@RequestBody CreateTicketDTO request) {
-        ticketService.insertTicketLowerSouth(request);
-        return ResponseEntity.ok().build();
-    }
-
-
-    @Operation(description = "Operação para colocar ingressos do setor sul superior a venda")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Ingressos criados com sucesso"),
-            @ApiResponse(responseCode = "401", description = "Usuário não autenticado"),
-            @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
-    })
-    @PostMapping("/insert-upperSouth")
-    public ResponseEntity<Void> insertTicketUpperSouth(@RequestBody CreateTicketDTO request) {
-        ticketService.insertTicketUpperSouth(request);
-        return ResponseEntity.ok().build();
-    }
-
-
-    @Operation(description = "Operação para colocar ingressos do setor norte inferior a venda")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Ingressos criados com sucesso"),
-            @ApiResponse(responseCode = "401", description = "Usuário não autenticado"),
-            @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
-    })
-    @PostMapping("/insert-lowerNorth")
-    public ResponseEntity<Void> insertTicketLowerNorth(@RequestBody CreateTicketDTO request) {
-        ticketService.insertTicketLowerNorth(request);
-        return ResponseEntity.ok().build();
-    }
-
-
-    @Operation(description = "Operação para colocar ingressos do setor norte superior a venda")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Ingressos criados com sucesso"),
-            @ApiResponse(responseCode = "401", description = "Usuário não autenticado"),
-            @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
-    })
-    @PostMapping("/insert-upperNorth")
-    public ResponseEntity<Void> insertTicketUpperNorth(@RequestBody CreateTicketDTO request) {
-        ticketService.insertTicketUpperNorth(request);
-        return ResponseEntity.ok().build();
-    }
-
 
     @Operation(description = "Operação para filtrar ingressos do setor leste inferior a venda")
     @ApiResponses(value = {

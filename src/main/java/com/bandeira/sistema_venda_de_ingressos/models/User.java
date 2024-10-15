@@ -1,6 +1,7 @@
 package com.bandeira.sistema_venda_de_ingressos.models;
 import com.bandeira.sistema_venda_de_ingressos.models.enums.UserRole;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+@AllArgsConstructor
 @Table(name = "users")
 @Entity
 public class User implements UserDetails {
@@ -49,6 +51,15 @@ public class User implements UserDetails {
 
 
     public User(String name, String email, String password, String cpf, UserRole userRole) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.cpf = cpf;
+        this.userRole = userRole;
+    }
+
+    public User(Long id, String name, String email, String password, String cpf, UserRole userRole) {
+        this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;

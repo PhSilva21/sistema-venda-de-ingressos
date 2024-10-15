@@ -58,4 +58,14 @@ public class Ticket {
         this.sector = sector;
         this.statusTicket = statusTicket;
     }
+
+    public Ticket(Long id, BigDecimal price, Long chair, LocalDate date, SectorTicket sector
+            , StatusTicket statusTicket) {
+        this.id = id;
+        this.price = price;
+        this.chair = chair;
+        this.date = date;
+        this.sector = sector;
+        this.statusTicket = statusTicket;
+    }
 }

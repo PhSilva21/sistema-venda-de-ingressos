@@ -24,9 +24,6 @@ public class UserController {
 
     private final UserService userService;
 
-    private final AuthenticationManager authenticationManager;
-
-    private final TokenService tokenService;
 
     @Operation(description = "Operação para criar usuário")
     @ApiResponses(value = {
