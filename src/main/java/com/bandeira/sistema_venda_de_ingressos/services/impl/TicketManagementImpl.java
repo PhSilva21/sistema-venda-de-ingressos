@@ -1,6 +1,7 @@
 package com.bandeira.sistema_venda_de_ingressos.services.impl;
 
 import com.bandeira.sistema_venda_de_ingressos.dtos.CreateTicketDTO;
+import com.bandeira.sistema_venda_de_ingressos.exceptions.NumberOfTicketsLargerThanTheSectorException;
 import com.bandeira.sistema_venda_de_ingressos.models.Ticket;
 import com.bandeira.sistema_venda_de_ingressos.models.enums.SectorTicket;
 import com.bandeira.sistema_venda_de_ingressos.models.enums.StatusTicket;
@@ -26,8 +27,11 @@ public class TicketManagementImpl implements TicketManagementService {
 
     @Override
     public List<Ticket> insertTicketLowerEast(CreateTicketDTO request) {
-        List<Ticket> tickets = new ArrayList<>();
+        if(request.numberOfTickets() > 5625){
+            throw new NumberOfTicketsLargerThanTheSectorException();
+        }
 
+        List<Ticket> tickets = new ArrayList<>();
         for (long i = 1; i <= request.numberOfTickets(); i++) {
 
             Ticket ticket = new Ticket(
@@ -43,7 +47,12 @@ public class TicketManagementImpl implements TicketManagementService {
     }
 
     @Override
-    public void insertTicketUpperEast(CreateTicketDTO request) {
+    public List<Ticket> insertTicketUpperEast(CreateTicketDTO request) {
+        if(request.numberOfTickets() > 5625){
+            throw new NumberOfTicketsLargerThanTheSectorException();
+        }
+
+        List<Ticket> tickets = new ArrayList<>();
         for (long i = 1; i <= request.numberOfTickets(); i++) {
 
             long chair = 5625 + i;
@@ -55,18 +64,18 @@ public class TicketManagementImpl implements TicketManagementService {
                     SectorTicket.LOWER_EAST,
                     StatusTicket.AVAILABLE
             );
-
-            List<Ticket> tickets = new ArrayList<>();
-
             tickets.add(ticket);
-
-            ticketRepository.saveAll(tickets);
-
         }
+        return saveAllTickets(tickets);
     }
 
     @Override
-    public void insertTicketLowerWest(CreateTicketDTO request) {
+    public List<Ticket> insertTicketLowerWest(CreateTicketDTO request) {
+        if(request.numberOfTickets() > 5625){
+            throw new NumberOfTicketsLargerThanTheSectorException();
+        }
+
+        List<Ticket> tickets = new ArrayList<>();
         for (long i = 1; i <= request.numberOfTickets(); i++) {
 
             long chair = 11250 + i;
@@ -79,17 +88,18 @@ public class TicketManagementImpl implements TicketManagementService {
                     StatusTicket.AVAILABLE
             );
 
-            List<Ticket> tickets = new ArrayList<>();
-
             tickets.add(ticket);
-
-            ticketRepository.saveAll(tickets);
-
         }
+        return saveAllTickets(tickets);
     }
 
     @Override
-    public void insertTicketUpperWest(CreateTicketDTO request) {
+    public List<Ticket> insertTicketUpperWest(CreateTicketDTO request) {
+        if(request.numberOfTickets() > 5625){
+            throw new NumberOfTicketsLargerThanTheSectorException();
+        }
+
+        List<Ticket> tickets = new ArrayList<>();
         for (long i = 1; i <= request.numberOfTickets(); i++) {
 
             long chair = 16875 + i;
@@ -101,18 +111,18 @@ public class TicketManagementImpl implements TicketManagementService {
                     SectorTicket.LOWER_EAST,
                     StatusTicket.AVAILABLE
             );
-
-            List<Ticket> tickets = new ArrayList<>();
-
             tickets.add(ticket);
-
-            ticketRepository.saveAll(tickets);
-
         }
+        return saveAllTickets(tickets);
     }
 
     @Override
-    public void insertTicketLowerSouth(CreateTicketDTO request) {
+    public List<Ticket> insertTicketLowerSouth(CreateTicketDTO request) {
+        if(request.numberOfTickets() > 5625){
+            throw new NumberOfTicketsLargerThanTheSectorException();
+        }
+
+        List<Ticket> tickets = new ArrayList<>();
         for (long i = 1; i <= request.numberOfTickets(); i++) {
 
             long chair = 22500 + i;
@@ -124,14 +134,18 @@ public class TicketManagementImpl implements TicketManagementService {
                     SectorTicket.LOWER_EAST,
                     StatusTicket.AVAILABLE
             );
-
-            ticketRepository.save(ticket);
+            tickets.add(ticket);
         }
-
+        return saveAllTickets(tickets);
     }
 
     @Override
-    public void insertTicketUpperSouth(CreateTicketDTO request) {
+    public List<Ticket> insertTicketUpperSouth(CreateTicketDTO request) {
+        if(request.numberOfTickets() > 5625){
+            throw new NumberOfTicketsLargerThanTheSectorException();
+        }
+
+        List<Ticket> tickets = new ArrayList<>();
         for (long i = 1; i <= request.numberOfTickets(); i++) {
 
             long chair = 28125 + i;
@@ -143,18 +157,18 @@ public class TicketManagementImpl implements TicketManagementService {
                     SectorTicket.LOWER_EAST,
                     StatusTicket.AVAILABLE
             );
-
-            List<Ticket> tickets = new ArrayList<>();
-
             tickets.add(ticket);
-
-            ticketRepository.saveAll(tickets);
-
         }
+        return saveAllTickets(tickets);
     }
 
     @Override
-    public void insertTicketLowerNorth(CreateTicketDTO request) {
+    public List<Ticket> insertTicketLowerNorth(CreateTicketDTO request) {
+        if(request.numberOfTickets() > 5625){
+            throw new NumberOfTicketsLargerThanTheSectorException();
+        }
+
+        List<Ticket> tickets = new ArrayList<>();
         for (long i = 1; i <= request.numberOfTickets(); i++) {
 
             long chair = 33750 + i;
@@ -166,18 +180,18 @@ public class TicketManagementImpl implements TicketManagementService {
                     SectorTicket.LOWER_EAST,
                     StatusTicket.AVAILABLE
             );
-
-            List<Ticket> tickets = new ArrayList<>();
-
             tickets.add(ticket);
-
-            ticketRepository.saveAll(tickets);
-
         }
+        return saveAllTickets(tickets);
     }
 
     @Override
-    public void insertTicketUpperNorth(CreateTicketDTO request) {
+    public List<Ticket> insertTicketUpperNorth(CreateTicketDTO request) {
+        if(request.numberOfTickets() > 5625){
+            throw new NumberOfTicketsLargerThanTheSectorException();
+        }
+
+        List<Ticket> tickets = new ArrayList<>();
         for (long i = 1; i <= request.numberOfTickets(); i++) {
 
             long chair = 39375 + i;
@@ -189,14 +203,9 @@ public class TicketManagementImpl implements TicketManagementService {
                     SectorTicket.LOWER_EAST,
                     StatusTicket.AVAILABLE
             );
-
-            List<Ticket> tickets = new ArrayList<>();
-
             tickets.add(ticket);
-
-            ticketRepository.saveAll(tickets);
-
         }
+        return saveAllTickets(tickets);
     }
 
     @Override

@@ -40,7 +40,7 @@ public class TicketManagementController {
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
     @PostMapping("/insert-upperEast")
-    public ResponseEntity<Void> insertTicketUpperEast(@RequestBody CreateTicketDTO request) {
+    public ResponseEntity<List<Ticket>> insertTicketUpperEast(@RequestBody CreateTicketDTO request) {
         ticketManagementService.insertTicketUpperEast(request);
         return ResponseEntity.ok().build();
     }
@@ -52,7 +52,7 @@ public class TicketManagementController {
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
     @PostMapping("/insert-lowerWest")
-    public ResponseEntity<Void> insertTicketLowerWest(@RequestBody CreateTicketDTO request) {
+    public ResponseEntity<List<Ticket>> insertTicketLowerWest(@RequestBody CreateTicketDTO request) {
         ticketManagementService.insertTicketLowerWest(request);
         return ResponseEntity.ok().build();
     }
@@ -65,7 +65,7 @@ public class TicketManagementController {
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
     @PostMapping("/insert-upperWest")
-    public ResponseEntity<Void> insertTicketUpperWest(@RequestBody CreateTicketDTO request) {
+    public ResponseEntity<List<Ticket>> insertTicketUpperWest(@RequestBody CreateTicketDTO request) {
         ticketManagementService.insertTicketUpperWest(request);
         return ResponseEntity.ok().build();
     }
@@ -78,7 +78,7 @@ public class TicketManagementController {
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
     @PostMapping("/insert-lowerSouth")
-    public ResponseEntity<Void> insertTicketLowerSouth(@RequestBody CreateTicketDTO request) {
+    public ResponseEntity<List<Ticket>> insertTicketLowerSouth(@RequestBody CreateTicketDTO request) {
         ticketManagementService.insertTicketLowerSouth(request);
         return ResponseEntity.ok().build();
     }
@@ -91,7 +91,7 @@ public class TicketManagementController {
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
     @PostMapping("/insert-upperSouth")
-    public ResponseEntity<Void> insertTicketUpperSouth(@RequestBody CreateTicketDTO request) {
+    public ResponseEntity<List<Ticket>> insertTicketUpperSouth(@RequestBody CreateTicketDTO request) {
         ticketManagementService.insertTicketUpperSouth(request);
         return ResponseEntity.ok().build();
     }
@@ -104,7 +104,7 @@ public class TicketManagementController {
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
     @PostMapping("/insert-lowerNorth")
-    public ResponseEntity<Void> insertTicketLowerNorth(@RequestBody CreateTicketDTO request) {
+    public ResponseEntity<List<Ticket>> insertTicketLowerNorth(@RequestBody CreateTicketDTO request) {
         ticketManagementService.insertTicketLowerNorth(request);
         return ResponseEntity.ok().build();
     }
@@ -117,7 +117,7 @@ public class TicketManagementController {
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
     @PostMapping("/insert-upperNorth")
-    public ResponseEntity<Void> insertTicketUpperNorth(@RequestBody CreateTicketDTO request) {
+    public ResponseEntity<List<Ticket>> insertTicketUpperNorth(@RequestBody CreateTicketDTO request) {
         ticketManagementService.insertTicketUpperNorth(request);
         return ResponseEntity.ok().build();
     }

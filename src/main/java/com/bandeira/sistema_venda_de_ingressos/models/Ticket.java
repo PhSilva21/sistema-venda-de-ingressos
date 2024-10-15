@@ -49,7 +49,6 @@ public class Ticket {
     private User user;
 
 
-
     public Ticket(BigDecimal price, Long chair, LocalDate date, SectorTicket sector
             , StatusTicket statusTicket) {
         this.price = price;

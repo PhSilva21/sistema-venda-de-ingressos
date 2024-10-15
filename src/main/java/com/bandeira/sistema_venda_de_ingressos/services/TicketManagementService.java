@@ -12,19 +12,19 @@ public interface TicketManagementService {
 
     List<Ticket> insertTicketLowerEast(CreateTicketDTO request);
 
-    void insertTicketUpperEast(CreateTicketDTO request);
+    List<Ticket> insertTicketUpperEast(CreateTicketDTO request);
 
-    void insertTicketLowerWest(CreateTicketDTO request);
+    List<Ticket> insertTicketLowerWest(CreateTicketDTO request);
 
-    void insertTicketUpperWest(CreateTicketDTO request);
+    List<Ticket> insertTicketUpperWest(CreateTicketDTO request);
 
-    void insertTicketLowerSouth(CreateTicketDTO request);
+    List<Ticket> insertTicketLowerSouth(CreateTicketDTO request);
 
-    void insertTicketUpperSouth(CreateTicketDTO request);
+    List<Ticket> insertTicketUpperSouth(CreateTicketDTO request);
 
-    void insertTicketLowerNorth(CreateTicketDTO request);
+    List<Ticket> insertTicketLowerNorth(CreateTicketDTO request);
 
-    void insertTicketUpperNorth(CreateTicketDTO request);
+    List<Ticket> insertTicketUpperNorth(CreateTicketDTO request);
 
     void deleteAllTickets();
 }
