@@ -1,8 +1,5 @@
 package com.bandeira.sistema_venda_de_ingressos.infra;
 
-
-
-
 import com.bandeira.sistema_venda_de_ingressos.exceptions.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

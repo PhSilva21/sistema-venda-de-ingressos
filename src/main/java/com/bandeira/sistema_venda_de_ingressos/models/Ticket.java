@@ -31,7 +31,7 @@ public class Ticket {
 
     private LocalDate date;
 
-
+    @Column(unique = true)
     private Long chair;
 
 

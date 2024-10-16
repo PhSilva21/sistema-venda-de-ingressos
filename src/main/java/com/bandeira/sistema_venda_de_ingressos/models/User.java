@@ -29,13 +29,13 @@ public class User implements UserDetails {
 
     private String name;
 
-
+    @Column(unique = true)
     private String email;
 
 
     private String password;
 
-
+    @Column(unique = true)
     private String cpf;
 
 
@@ -45,6 +45,8 @@ public class User implements UserDetails {
     private Long points;
 
 
+    @OneToMany(mappedBy = "user")
+    private List<Ticket> tickets = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
     private List<Plan> vipsUsers = new ArrayList<>();
@@ -67,13 +69,11 @@ public class User implements UserDetails {
         this.userRole = userRole;
     }
 
-
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if(this.userRole == UserRole.ADMIN)
-            return List.of(new SimpleGrantedAuthority("ROLE_ADMIN)"),new SimpleGrantedAuthority("ROLE_USER"));
-        else return List.of(new SimpleGrantedAuthority("ROLe_USER"));
+            return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"),new SimpleGrantedAuthority("ROLE_USER"));
+        else return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
     @Override

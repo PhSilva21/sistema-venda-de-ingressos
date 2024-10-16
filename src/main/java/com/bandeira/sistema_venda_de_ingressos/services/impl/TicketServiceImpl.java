@@ -42,6 +42,8 @@ public class TicketServiceImpl implements TicketService {
 
         ticket.setStatusTicket(StatusTicket.UNAVAILABLE);
 
+        user.getTickets().add(ticket);
+
         emailService.sendEmailBuyTicket(user);
 
         ticketRepository.save(ticket);

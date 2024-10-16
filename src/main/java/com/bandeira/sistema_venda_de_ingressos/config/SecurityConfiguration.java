@@ -44,7 +44,7 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.POST, "/api/v1/management/insert-upper-south").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/v1/management/insert-lower-north").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/v1/management/insert-upper-north").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/api/v1/management/deleteAll").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/v1/management/deleteAll").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/v1/users/create-user").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/v1/users/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/v1/plans/create-plan").hasRole("ADMIN")

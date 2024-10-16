@@ -61,7 +61,7 @@ public class TicketManagementImpl implements TicketManagementService {
                     request.price(),
                     chair,
                     request.date(),
-                    SectorTicket.LOWER_EAST,
+                    SectorTicket.UPPER_EAST,
                     StatusTicket.AVAILABLE
             );
             tickets.add(ticket);
@@ -84,7 +84,7 @@ public class TicketManagementImpl implements TicketManagementService {
                     request.price(),
                     chair,
                     request.date(),
-                    SectorTicket.LOWER_EAST,
+                    SectorTicket.LOWER_WEST,
                     StatusTicket.AVAILABLE
             );
 
@@ -108,7 +108,7 @@ public class TicketManagementImpl implements TicketManagementService {
                     request.price(),
                     chair,
                     request.date(),
-                    SectorTicket.LOWER_EAST,
+                    SectorTicket.UPPER_WEST,
                     StatusTicket.AVAILABLE
             );
             tickets.add(ticket);
@@ -131,7 +131,7 @@ public class TicketManagementImpl implements TicketManagementService {
                     request.price(),
                     chair,
                     request.date(),
-                    SectorTicket.LOWER_EAST,
+                    SectorTicket.LOWER_SOUTH,
                     StatusTicket.AVAILABLE
             );
             tickets.add(ticket);
@@ -154,7 +154,7 @@ public class TicketManagementImpl implements TicketManagementService {
                     request.price(),
                     chair,
                     request.date(),
-                    SectorTicket.LOWER_EAST,
+                    SectorTicket.UPPER_SOUTH,
                     StatusTicket.AVAILABLE
             );
             tickets.add(ticket);
@@ -177,7 +177,7 @@ public class TicketManagementImpl implements TicketManagementService {
                     request.price(),
                     chair,
                     request.date(),
-                    SectorTicket.LOWER_EAST,
+                    SectorTicket.LOWER_NORTH,
                     StatusTicket.AVAILABLE
             );
             tickets.add(ticket);
@@ -200,7 +200,7 @@ public class TicketManagementImpl implements TicketManagementService {
                     request.price(),
                     chair,
                     request.date(),
-                    SectorTicket.LOWER_EAST,
+                    SectorTicket.UPPER_SOUTH,
                     StatusTicket.AVAILABLE
             );
             tickets.add(ticket);
