@@ -12,7 +12,7 @@ public record UpdatePasswordDTO(
 
         @NotNull(message = "A senha não pode ser nula")
         @NotBlank(message = "A senha não pode ser vazia")
-        String password,
+        String code,
 
         @NotNull(message = "A nova senha não pode ser nula")
         @NotBlank(message = "A nova senha não pode ser vazia")

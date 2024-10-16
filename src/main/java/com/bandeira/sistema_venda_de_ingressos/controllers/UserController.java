@@ -58,7 +58,7 @@ public class UserController {
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
     @GetMapping("update-password")
-    public ResponseEntity<UserDetails> updatePassword(@RequestBody UpdatePasswordDTO request) {
+    public ResponseEntity<UserDetails> updatePassword(@RequestBody UpdatePasswordDTO request) throws MessagingException, UnsupportedEncodingException {
         userService.updatePassword(request);
         return ResponseEntity.ok().build();
     }

@@ -28,7 +28,7 @@ public class TokenServiceImpl implements TokenService {
             String token = JWT.create()
                     .withIssuer("auth-api")
                     .withSubject(user.getEmail())
-                    .withExpiresAt(genExpirationDate())
+                    .withExpiresAt(getExpirationDate())
                     .sign(algorithm);
             return token;
         } catch (JWTCreationException exception) {
@@ -52,7 +52,7 @@ public class TokenServiceImpl implements TokenService {
 
 
     @Override
-    public Instant genExpirationDate() {
+    public Instant getExpirationDate() {
         return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
     }
 }

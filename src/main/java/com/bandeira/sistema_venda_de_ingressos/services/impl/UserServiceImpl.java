@@ -9,11 +9,8 @@ import com.bandeira.sistema_venda_de_ingressos.services.TokenService;
 import com.bandeira.sistema_venda_de_ingressos.services.UserService;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -40,13 +37,8 @@ public class UserServiceImpl implements UserService {
             throw new EmailAlreadyExists();
         }
 
-        User user = new User(
-                request.name(),
-                request.email(),
-                encryptedPassword(request.password()),
-                request.cpf(),
-                request.userRole()
-        );
+        User user = new User(request.name(), request.email(), encryptedPassword(request.password())
+                , request.cpf(), request.userRole());
 
         userRepository.save(user);
 
@@ -58,6 +50,10 @@ public class UserServiceImpl implements UserService {
     public LoginResponse login(LoginUserDTO request) {
         var usernamePassword = new UsernamePasswordAuthenticationToken(request.email(), request.password());
         var auth = this.authenticationManager.authenticate(usernamePassword);
+
+        if(auth == null){
+            throw new IncorrectEmailOrPassword();
+        }
 
         var token = tokenService.generateToken((User) auth.getPrincipal());
 
@@ -101,13 +97,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updatePassword(UpdatePasswordDTO request) {
+    public void updatePassword(UpdatePasswordDTO request) throws MessagingException, UnsupportedEncodingException {
         var user = userRepository.findById(request.id())
                 .orElseThrow(UserNotFoundException::new);
 
-        if (!user.getPassword().equals(request.password())){
-            throw new IncorrectPasswordException();
-        }
+        confirmationCode(user, request.code());
 
         if (!request.newPassword().equals(request.newPasswordConfirmation())){
             throw new PasswordsDoNotMatch();
@@ -125,9 +119,9 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-
+    @Override
     public String encryptedPassword(String password){
-        return new BCryptPasswordEncoder().encode(password);
+        return passwordEncoder.encode(password);
     }
 
 

@@ -25,7 +25,9 @@ public interface UserService {
 
     void updateEmail(UpdateEmailDTO updateEmailDTO) throws MessagingException, UnsupportedEncodingException;
 
-    void updatePassword(UpdatePasswordDTO updatePasswordDTO);
+    void updatePassword(UpdatePasswordDTO updatePasswordDTO) throws MessagingException, UnsupportedEncodingException;
 
     void confirmationCode(User user, String code) throws MessagingException, UnsupportedEncodingException;
+
+    String encryptedPassword(String password);
 }

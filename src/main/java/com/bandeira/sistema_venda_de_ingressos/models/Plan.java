@@ -2,6 +2,7 @@ package com.bandeira.sistema_venda_de_ingressos.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,6 +33,13 @@ public class Plan {
 
 
     public Plan(String name, BigDecimal price) {
+        this.name = name;
+        this.price = price;
+
+    }
+
+    public Plan(Long id, String name, BigDecimal price) {
+        this.id = id;
         this.name = name;
         this.price = price;
 

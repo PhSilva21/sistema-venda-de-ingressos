@@ -26,12 +26,13 @@ public class VipPlanServiceImpl implements VipPlanService {
 
     private final EmailService emailService;
 
+
     @Override
     public void buySilverPlan(Long id) throws MessagingException, UnsupportedEncodingException {
         var user = userRepository.findById(id)
                 .orElseThrow(UserNotFoundException::new);
 
-        var plan = planRepository.findById(1L).orElseThrow(RuntimeException::new);
+        var plan = planRepository.findById(1L).orElseThrow(PlanNotFoundException::new);
 
         user.setPoints(2L);
 
@@ -43,7 +44,7 @@ public class VipPlanServiceImpl implements VipPlanService {
         var user = userRepository.findById(id)
                 .orElseThrow(UserNotFoundException::new);
 
-        var plan = planRepository.findById(2L).orElseThrow(RuntimeException::new);
+        var plan = planRepository.findById(2L).orElseThrow(PlanNotFoundException::new);
 
 
         user.setPoints(4L);
@@ -56,7 +57,7 @@ public class VipPlanServiceImpl implements VipPlanService {
         var user = userRepository.findById(id)
                 .orElseThrow(UserNotFoundException::new);
 
-        var plan = planRepository.findById(3L).orElseThrow(RuntimeException::new);
+        var plan = planRepository.findById(3L).orElseThrow(PlanNotFoundException::new);
 
 
         user.setPoints(6L);
@@ -69,7 +70,7 @@ public class VipPlanServiceImpl implements VipPlanService {
         var user = userRepository.findById(id)
                 .orElseThrow(UserNotFoundException::new);
 
-        var plan = planRepository.findById(4L).orElseThrow(RuntimeException::new);
+        var plan = planRepository.findById(4L).orElseThrow(PlanNotFoundException::new);
 
 
         user.setPoints(10L);
@@ -79,10 +80,11 @@ public class VipPlanServiceImpl implements VipPlanService {
 
     @Override
     public Plan createPlan(CreatePlanDTO request) {
-        return new Plan(
+            Plan plan =  new Plan(
                 request.name(),
                 request.price()
-        );
+            );
+        return planRepository.save(plan);
     }
 
 

@@ -11,5 +11,5 @@ public interface TokenService {
 
     String validateToken(String token);
 
-    Instant genExpirationDate();
+    Instant getExpirationDate();
 }
