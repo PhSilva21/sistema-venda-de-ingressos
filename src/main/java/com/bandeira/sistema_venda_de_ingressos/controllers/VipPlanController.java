@@ -93,7 +93,7 @@ public class VipPlanController {
             @ApiResponse(responseCode = "417", description = "Erro de validação de dados"),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete-by-id/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable Long id) {
         vipPlanService.deleteById(id);
         return ResponseEntity.ok().build();
@@ -106,7 +106,7 @@ public class VipPlanController {
             @ApiResponse(responseCode = "417", description = "Erro de validação de dados"),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
-    @PostMapping("/update")
+    @PostMapping("/update-plan")
     public ResponseEntity<Plan> updatePlan(@RequestBody UpdatePlanDTO request) {
         Plan plan = vipPlanService.updatePlan(request);
         return ResponseEntity.ok().body(plan);

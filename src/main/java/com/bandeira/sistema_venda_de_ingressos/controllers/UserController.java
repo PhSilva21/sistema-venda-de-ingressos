@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.UnsupportedEncodingException;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/v1/users")
 @RequiredArgsConstructor
 public class UserController {
 
@@ -70,7 +70,7 @@ public class UserController {
             @ApiResponse(responseCode = "417", description = "Erro de validação de dados"),
             @ApiResponse(responseCode = "500", description = "Erro intern do servidor")
     })
-    @GetMapping("/{id}")
+    @GetMapping("/find-by-id/{id}")
     public ResponseEntity<User> findById(@PathVariable Long id) {
         var user = userService.findById(id);
         return ResponseEntity.ok().body(user);
@@ -95,7 +95,7 @@ public class UserController {
             @ApiResponse(responseCode = "417", description = "Erro de validação de dados"),
             @ApiResponse(responseCode = "500", description = "Erro intern do servidor")
     })
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete-by-id/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable Long id) {
         userService.deleteById(id);
         return ResponseEntity.ok().build();

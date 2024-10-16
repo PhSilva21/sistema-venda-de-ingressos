@@ -26,7 +26,7 @@ public class TicketManagementController {
             @ApiResponse(responseCode = "401", description = "Usuário não autenticado"),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
-    @PostMapping("/insert-lowerEast")
+    @PostMapping("/insert-lower-east")
     public ResponseEntity<List<Ticket>> insertTicketLowerEast(@RequestBody CreateTicketDTO request) {
         var response = ticketManagementService.insertTicketLowerEast(request);
         return ResponseEntity.ok().body(response);
@@ -39,7 +39,7 @@ public class TicketManagementController {
             @ApiResponse(responseCode = "401", description = "Usuário não autenticado"),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
-    @PostMapping("/insert-upperEast")
+    @PostMapping("/insert-upper-east")
     public ResponseEntity<List<Ticket>> insertTicketUpperEast(@RequestBody CreateTicketDTO request) {
         ticketManagementService.insertTicketUpperEast(request);
         return ResponseEntity.ok().build();
@@ -51,7 +51,7 @@ public class TicketManagementController {
             @ApiResponse(responseCode = "401", description = "Usuário não autenticado"),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
-    @PostMapping("/insert-lowerWest")
+    @PostMapping("/insert-lower-west")
     public ResponseEntity<List<Ticket>> insertTicketLowerWest(@RequestBody CreateTicketDTO request) {
         ticketManagementService.insertTicketLowerWest(request);
         return ResponseEntity.ok().build();
@@ -64,7 +64,7 @@ public class TicketManagementController {
             @ApiResponse(responseCode = "401", description = "Usuário não autenticado"),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
-    @PostMapping("/insert-upperWest")
+    @PostMapping("/insert-upper-west")
     public ResponseEntity<List<Ticket>> insertTicketUpperWest(@RequestBody CreateTicketDTO request) {
         ticketManagementService.insertTicketUpperWest(request);
         return ResponseEntity.ok().build();
@@ -77,7 +77,7 @@ public class TicketManagementController {
             @ApiResponse(responseCode = "401", description = "Usuário não autenticado"),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
-    @PostMapping("/insert-lowerSouth")
+    @PostMapping("/insert-lower-south")
     public ResponseEntity<List<Ticket>> insertTicketLowerSouth(@RequestBody CreateTicketDTO request) {
         ticketManagementService.insertTicketLowerSouth(request);
         return ResponseEntity.ok().build();
@@ -90,7 +90,7 @@ public class TicketManagementController {
             @ApiResponse(responseCode = "401", description = "Usuário não autenticado"),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
-    @PostMapping("/insert-upperSouth")
+    @PostMapping("/insert-upper-south")
     public ResponseEntity<List<Ticket>> insertTicketUpperSouth(@RequestBody CreateTicketDTO request) {
         ticketManagementService.insertTicketUpperSouth(request);
         return ResponseEntity.ok().build();
@@ -103,7 +103,7 @@ public class TicketManagementController {
             @ApiResponse(responseCode = "401", description = "Usuário não autenticado"),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
-    @PostMapping("/insert-lowerNorth")
+    @PostMapping("/insert-lower-north")
     public ResponseEntity<List<Ticket>> insertTicketLowerNorth(@RequestBody CreateTicketDTO request) {
         ticketManagementService.insertTicketLowerNorth(request);
         return ResponseEntity.ok().build();
@@ -116,7 +116,7 @@ public class TicketManagementController {
             @ApiResponse(responseCode = "401", description = "Usuário não autenticado"),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
-    @PostMapping("/insert-upperNorth")
+    @PostMapping("/insert-upper-north")
     public ResponseEntity<List<Ticket>> insertTicketUpperNorth(@RequestBody CreateTicketDTO request) {
         ticketManagementService.insertTicketUpperNorth(request);
         return ResponseEntity.ok().build();

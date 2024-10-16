@@ -40,7 +40,7 @@ public class TicketController {
             @ApiResponse(responseCode = "200", description = "Retornando lista com sucesso"),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
-    @GetMapping("/filter-lowerEast")
+    @GetMapping("/filter-lower-east")
     public ResponseEntity<List<Ticket>> filterLowerEast() {
         var response = ticketService.filterLowerEast();
         return ResponseEntity.ok(response);
@@ -52,7 +52,7 @@ public class TicketController {
             @ApiResponse(responseCode = "200", description = "Retornando lista com sucesso"),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
-    @GetMapping("/filter-upperEast")
+    @GetMapping("/filter-upper-east")
     public ResponseEntity<List<Ticket>> filterUpperEast() {
         var response = ticketService.filterUppersEast();
         return ResponseEntity.ok(response);
@@ -64,7 +64,7 @@ public class TicketController {
             @ApiResponse(responseCode = "200", description = "Retornando lista com sucesso"),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
-    @GetMapping("/filter-lowerWest")
+    @GetMapping("/filter-lower-west")
     public ResponseEntity<List<Ticket>> filterLowerWest() {
         var response = ticketService.filterLowerWest();
         return ResponseEntity.ok(response);
@@ -76,7 +76,7 @@ public class TicketController {
             @ApiResponse(responseCode = "200", description = "Retornando lista com sucesso"),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
-    @GetMapping("/filter-upperWest")
+    @GetMapping("/filter-upper-west")
     public ResponseEntity<List<Ticket>> filterUpperWest() {
         var response = ticketService.filterUpperWest();
         return ResponseEntity.ok(response);
@@ -88,7 +88,7 @@ public class TicketController {
             @ApiResponse(responseCode = "200", description = "Retornando lista com sucesso"),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
-    @GetMapping("/filter-lowerSouth")
+    @GetMapping("/filter-lower-south")
     public ResponseEntity<List<Ticket>> filterLowerSouth() {
         var response = ticketService.filterLowerSouth();
         return ResponseEntity.ok(response);
@@ -100,7 +100,7 @@ public class TicketController {
             @ApiResponse(responseCode = "200", description = "Retornando lista com sucesso"),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
-    @GetMapping("/filter-upperSouth")
+    @GetMapping("/filter-upper-south")
     public ResponseEntity<List<Ticket>> filterUpperSouth() {
         var response = ticketService.filterUpperSouth();
         return ResponseEntity.ok(response);
@@ -112,7 +112,7 @@ public class TicketController {
             @ApiResponse(responseCode = "200", description = "Retornando lista com sucesso"),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
-    @GetMapping("/filter-lowerNorth")
+    @GetMapping("/filter-lower-north")
     public ResponseEntity<List<Ticket>> filterLowerNorth() {
        var response = ticketService.filterLowerNorth();
         return ResponseEntity.ok(response);
@@ -124,7 +124,7 @@ public class TicketController {
             @ApiResponse(responseCode = "200", description = "Retornando lista com sucesso"),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
-    @GetMapping("/filter-upperNorth")
+    @GetMapping("/filter-upper-north")
     public ResponseEntity<List<Ticket>> filterUpperNorth() {
         var response = ticketService.filterUpperNorth();
         return ResponseEntity.ok(response);
