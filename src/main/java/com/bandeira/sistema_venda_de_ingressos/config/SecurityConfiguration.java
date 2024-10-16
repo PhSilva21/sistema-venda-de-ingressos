@@ -28,7 +28,6 @@ public class SecurityConfiguration {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/api/users/login").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/v1/tickets/buy").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/tickets/filter-lower-east").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/tickets/filter-upper-east").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/tickets/filter-lower-west").permitAll()
