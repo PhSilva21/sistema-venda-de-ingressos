@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.mail.MessagingException;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -81,7 +82,7 @@ public class VipPlanController {
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
     @PostMapping("create-plan")
-    public ResponseEntity<Plan> createPlan(@RequestBody CreatePlanDTO request) {
+    public ResponseEntity<Plan> createPlan(@RequestBody @Valid CreatePlanDTO request) {
         Plan plan = vipPlanService.createPlan(request);
         return ResponseEntity.ok().body(plan);
     }
@@ -107,7 +108,7 @@ public class VipPlanController {
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
     @PostMapping("/update-plan")
-    public ResponseEntity<Plan> updatePlan(@RequestBody UpdatePlanDTO request) {
+    public ResponseEntity<Plan> updatePlan(@RequestBody @Valid UpdatePlanDTO request) {
         Plan plan = vipPlanService.updatePlan(request);
         return ResponseEntity.ok().body(plan);
     }

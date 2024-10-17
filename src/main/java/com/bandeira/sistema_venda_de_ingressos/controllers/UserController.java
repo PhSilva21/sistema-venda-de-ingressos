@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.mail.MessagingException;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -32,7 +33,7 @@ public class UserController {
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
     @PostMapping("create-user")
-    public ResponseEntity<UserDetails> createUser(@RequestBody CreateUserDTO request)
+    public ResponseEntity<UserDetails> createUser(@RequestBody @Valid CreateUserDTO request)
             throws MessagingException, UnsupportedEncodingException {
         userService.createUser(request);
         return ResponseEntity.ok().build();
@@ -46,7 +47,7 @@ public class UserController {
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody LoginUserDTO request){
+    public ResponseEntity<LoginResponse> login(@RequestBody @Valid LoginUserDTO request){
         var response = userService.login(request);
         return ResponseEntity.ok().body(response);
     }
@@ -58,7 +59,7 @@ public class UserController {
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
     @GetMapping("update-password")
-    public ResponseEntity<UserDetails> updatePassword(@RequestBody UpdatePasswordDTO request) throws MessagingException, UnsupportedEncodingException {
+    public ResponseEntity<UserDetails> updatePassword(@RequestBody @Valid UpdatePasswordDTO request) throws MessagingException, UnsupportedEncodingException {
         userService.updatePassword(request);
         return ResponseEntity.ok().build();
     }
@@ -84,7 +85,7 @@ public class UserController {
             @ApiResponse(responseCode = "500", description = "Erro intern do servidor")
     })
     @PostMapping("/update-user")
-    public ResponseEntity<Void> updateUser(@RequestBody UpdateUserDTO updateUserDTO) {
+    public ResponseEntity<Void> updateUser(@RequestBody @Valid UpdateUserDTO updateUserDTO) {
         userService.updateUser(updateUserDTO);
         return ResponseEntity.ok().build();
     }
@@ -108,7 +109,7 @@ public class UserController {
             @ApiResponse(responseCode = "500", description = "Erro intern do servidor")
     })
     @PutMapping("/update-email")
-    public ResponseEntity<Void> updateEmail(@RequestBody UpdateEmailDTO request) throws MessagingException, UnsupportedEncodingException {
+    public ResponseEntity<Void> updateEmail(@RequestBody @Valid UpdateEmailDTO request) throws MessagingException, UnsupportedEncodingException {
         userService.updateEmail(request);
         return  ResponseEntity.ok().build();
     }

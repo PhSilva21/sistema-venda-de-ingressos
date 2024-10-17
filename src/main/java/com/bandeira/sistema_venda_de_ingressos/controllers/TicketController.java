@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.mail.MessagingException;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,7 @@ public class TicketController {
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
     @PostMapping("/buy")
-    public ResponseEntity<Void> buyTicket(@RequestBody BuyTicketDTO request) throws MessagingException, UnsupportedEncodingException, UnsupportedEncodingException {
+    public ResponseEntity<Void> buyTicket(@RequestBody @Valid BuyTicketDTO request) throws MessagingException, UnsupportedEncodingException, UnsupportedEncodingException {
         ticketService.buyTicket(request);
         return ResponseEntity.ok().build();
     }
